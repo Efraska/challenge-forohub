@@ -1,6 +1,7 @@
 package com.desafio.forohub.controller;
 
 import com.desafio.forohub.domain.curso.Curso;
+import com.desafio.forohub.domain.curso.dto.ActualizarCursoDTO;
 import com.desafio.forohub.domain.curso.dto.CrearCursoDTO;
 import com.desafio.forohub.domain.curso.dto.DetalleCursoDTO;
 import com.desafio.forohub.domain.curso.repository.CursoRepository;
@@ -69,7 +70,7 @@ public class CursoController {
     @Transactional
     @Operation(summary = "Actualiza el nombre, la categoría o el estado de un curso")
     public ResponseEntity<DetalleCursoDTO> actualizarCurso(@PathVariable Long id,
-                                                              @RequestBody @Valid CrearCursoDTO actualizarCursoDTO) {
+                                                              @RequestBody @Valid ActualizarCursoDTO actualizarCursoDTO) {
         Curso curso = repository.getReferenceById(id);
 
         curso.actualizarCurso(actualizarCursoDTO);

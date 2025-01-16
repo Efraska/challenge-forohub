@@ -3,6 +3,7 @@ package com.desafio.forohub.domain.curso;
 import com.desafio.forohub.domain.curso.dto.ActualizarCursoDTO;
 import com.desafio.forohub.domain.curso.dto.CrearCursoDTO;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,7 +32,7 @@ public class Curso {
         this.activo = true;
     }
 
-    public void actualizarCurso(ActualizarCursoDTO actualizarCursoDTO) {
+    public void actualizarCurso(@Valid ActualizarCursoDTO actualizarCursoDTO) {
 
         if (actualizarCursoDTO.name() != null) {
             this.name = actualizarCursoDTO.name();
@@ -39,7 +40,7 @@ public class Curso {
         if (actualizarCursoDTO.categoria() != null) {
             this.categoria = actualizarCursoDTO.categoria();
         }
-        if (actualizarCursoDTO.activo()!= null) {
+        if (actualizarCursoDTO.activo() != null) {
             this.activo = actualizarCursoDTO.activo();
         }
     }
