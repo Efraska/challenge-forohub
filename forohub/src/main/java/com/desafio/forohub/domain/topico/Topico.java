@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "topicos")
-@Entity(name = "topicos")
+@Entity(name = "Topico")
 @EqualsAndHashCode(of = "id")
 public class Topico {
 
@@ -26,14 +26,15 @@ public class Topico {
     private String titulo;
     private String mensaje;
 
-    @Column(name = "fecha_creacion")
-    private LocalDateTime fecha_creacion;
+    @Column(name="fecha_creacion")
+    private LocalDateTime fechaCreacion;
 
-    @Column(name = "ultima_actualizacion")
-    private LocalDateTime ultima_actualizacion;
+    @Column(name="ultima_actualizacion")
+    private LocalDateTime ultimaActualizacion;
 
     @Enumerated(EnumType.STRING)
     private Estado estado;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id")
@@ -54,40 +55,42 @@ public class Topico {
     }
 
     public void actualizarTopicoConCurso(ActualizarTopicoDTO actualizarTopicoDTO, Curso curso) {
-        if (actualizarTopicoDTO.titulo() != null) {
-            this.titulo = actualizarTopicoDTO.titulo();
-        }
-        if (actualizarTopicoDTO.mensaje() != null) {
-            this.mensaje = actualizarTopicoDTO.mensaje();
-        }
-        if (actualizarTopicoDTO.estado() != null) {
-            this.estado = actualizarTopicoDTO.estado();
-        }
-        if (actualizarTopicoDTO.cursoId() != null) {
-            this.curso = curso;
-        }
-        this.ultimaActualizacion = LocalDateTime.now();
-    }
-
-    public void actualizarTopico(ActualizarTopicoDTO actualizarTopicoDTO) {
         if (actualizarTopicoDTO.titulo() != null){
             this.titulo = actualizarTopicoDTO.titulo();
         }
-        if (actualizarTopicoDTO.mensaje() != null) {
+        if (actualizarTopicoDTO.mensaje() != null){
             this.mensaje = actualizarTopicoDTO.mensaje();
         }
-        if (actualizarTopicoDTO.estado() != null) {
+        if (actualizarTopicoDTO.estado() != null){
+            this.estado = actualizarTopicoDTO.estado();
+        }
+        if (actualizarTopicoDTO.cursoId() != null){
+            this.curso = curso;
+        }
+        this.ultimaActualizacion = LocalDateTime.now();
+
+    }
+
+    public void actualizarTopico(ActualizarTopicoDTO actualizarTopicoDTO){
+        if (actualizarTopicoDTO.titulo() != null){
+            this.titulo = actualizarTopicoDTO.titulo();
+        }
+        if (actualizarTopicoDTO.mensaje() != null){
+            this.mensaje = actualizarTopicoDTO.mensaje();
+        }
+        if(actualizarTopicoDTO.estado() != null){
             this.estado = actualizarTopicoDTO.estado();
         }
         this.ultimaActualizacion = LocalDateTime.now();
     }
 
-    public void eliminarTopico() {
+    public void eliminarTopico(){
+
         this.estado = Estado.DELETED;
     }
 
-    public void setEstado(Estado estado) {
+    public void setEstado(Estado estado){
+
         this.estado = estado;
     }
-
 }

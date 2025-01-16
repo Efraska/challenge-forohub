@@ -5,7 +5,6 @@ import com.desafio.forohub.domain.usuario.dto.AutenticacionUsuarioDTO;
 import com.desafio.forohub.infra.security.dto.JWTtokenDTO;
 import com.desafio.forohub.infra.service.TokenService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
