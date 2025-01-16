@@ -16,8 +16,9 @@ public record DetallesTopicoDTO(
         String usuario,
         String curso,
         Categoria categoriaCurso
+
 ) {
-    // Empty constructor for Jackson
+
     public DetallesTopicoDTO(Topico topico) {
         this(topico.getId(),
                 topico.getTitulo(),
@@ -25,8 +26,10 @@ public record DetallesTopicoDTO(
                 topico.getFechaCreacion(),
                 topico.getUltimaActualizacion(),
                 topico.getEstado(),
-                topico.getUsuario().getUserName(),
+                topico.getUsuario().getUsername(),
                 topico.getCurso().getName(),
-                topico.getCurso().getCategoria());
+                topico.getCurso().getCategoria()
+        );
     }
+
 }
